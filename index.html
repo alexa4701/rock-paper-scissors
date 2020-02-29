@@ -1,9 +1,54 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Page Title</title>
+        <title>Rock Paper Scissors!</title>
         <meta charset="UTF-8" />
-        <script src="rockpaperscissors.js"></script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="css/reset.css"
+            media="all"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="css/main.css"
+            media="all"
+        />
     </head>
-    <body></body>
+    <body>
+        <div class="game-container">
+            <header class="header">
+                <div class="playerScore"></div>
+                <div class="title">
+                    <h1>Rock, Paper, Scissors!</h1>
+                </div>
+                <div class="computerScore"></div>
+            </header>
+            <main class="main">
+                <div class="instructions"><h2>First to 5 wins!</h2></div>
+                <div class="movesContainer">
+                    <div class="playerMove"></div>
+                    <div class="computerMove"></div>
+                </div>
+                <div class="results">Choose a move to start.</div>
+                <div class="buttonContainer">
+                    <div id="rock" class="moveButton">
+                        <img src="" />
+                        Rock
+                    </div>
+                    <div id="paper" class="moveButton">
+                        <img src="" />
+                        Paper
+                    </div>
+                    <div id="scissors" class="moveButton">
+                        <img src="" />
+                        Scissors
+                    </div>
+                </div>
+                <div class="resetButton">New game</div>
+            </main>
+        </div>
+        <script src="js/rockpaperscissors.js"></script>
+    </body>
 </html>
