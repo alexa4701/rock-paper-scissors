@@ -1,0 +1,121 @@
+body {
+    background-color: #fbfbfb;
+    background: linear-gradient(35deg, #fafafa, #fbfbfb;)
+    color: #434847;
+    font-family: "Nunito", sans-serif;
+    font-size: 14pt;
+}
+
+.game-container {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-row-gap: 20px;
+    grid-template-areas: "header" "game";
+}
+
+.header {
+    grid-area: header;
+    display: grid;
+    justify-items: center;
+    align-items: end;
+    grid-template-columns: 50px 1fr 50px;
+    background-color: #434847;
+    color: #fbfbfb;
+    font-size: 26pt;
+    font-weight: 800;
+}
+
+.game {
+    grid-area: game;
+    display: grid;
+    justify-items: center;
+    row-gap: 40px;
+    grid-template-areas:
+        "instructions"
+        "moves"
+        "results"
+        "buttons"
+        "reset";
+}
+.instructions {
+    font-weight: 700;
+    font-size: 22pt;
+}
+
+.movesContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 100px;
+}
+
+.playerMove,
+.computerMove {
+    display: grid;
+    justify-items: center;
+    row-gap: 20px;
+    background-color: #a2ffe5;
+    font-weight: 600;
+    
+}
+
+.playerMoveImg,
+.computerMoveImg {
+    max-width: 100%;
+    width: 400px;
+    padding: 10px;
+}
+
+#playerMoveDesc, #computerMoveDesc {
+    padding-top: 20px;
+}
+
+.results {
+    font-weight: 700;
+}
+
+.buttonContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 50px;
+    row-gap: 10px;
+}
+
+.moveButton {
+    display: grid;
+    grid-template-rows: 1fr 20px;
+    grid-template-columns: 1fr 2fr 1fr;
+    justify-items: center;
+    grid-template-areas:
+        ". image ."
+        ". label .";
+    background-color: #ffa2b4;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.moveButton:hover {
+    box-shadow: inset 10px 10px 300px 10px rgba(0, 0, 0, 0.23);
+    transform: scale(1.1);
+}
+
+.buttonImg {
+    grid-area: image;
+    max-width: 100%;
+    width: 100px;
+}
+
+.buttonLabel {
+    grid-area: label;
+}
+
+.resetButton {
+    padding: 30px;
+    background-color: #ffa2b4;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+.resetButton:hover {
+    box-shadow: inset 10px 10px 300px 10px rgba(0, 0, 0, 0.23);
+    transform: scale(1.1);
+}
