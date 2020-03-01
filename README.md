@@ -1,2 +1,2 @@
 # rock-paper-scissors
-JS Rock paper scissors game in the console. For the Odin Project Curriculum
+JS Rock paper scissors game in the DOM. For the Odin Project Curriculum
