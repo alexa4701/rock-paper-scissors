@@ -144,7 +144,6 @@ function playRound(event) {
         }
     }
 
-    roundNumber++;
     updateDOM();
 }
 
