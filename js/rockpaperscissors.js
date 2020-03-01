@@ -2,23 +2,24 @@ let playerMove = "",
     computerMove = "",
     roundResult = "";
 let playerScore = 0,
-    computerScore = 0,
-    roundNumber = 0;
+    computerScore = 0;
 let gameOver = false;
 
-const buttonList = document.querySelectorAll(".moveButton");
-const resetButton = document.querySelector(".resetButton");
+const buttonListDOM = document.querySelectorAll(".moveButton");
+const resetButtonDOM = document.querySelector(".resetButton");
 const playerScoreDOM = document.querySelector(".playerScore");
 const computerScoreDOM = document.querySelector(".computerScore");
-const playerMoveDOM = document.querySelector(".playerMove");
-const computerMoveDOM = document.querySelector(".computerMove");
+const playerMoveImgDOM = document.querySelector(".playerMoveImg");
+const computerMoveImgDOM = document.querySelector(".computerMoveImg");
+const playerMoveDescDOM = document.querySelector("#playerMoveDesc");
+const computerMoveDescDOM = document.querySelector("#computerMoveDesc");
 const resultsDOM = document.querySelector(".results");
 
-buttonList.forEach(button => {
+buttonListDOM.forEach(button => {
     button.addEventListener("mouseup", playRound);
 });
 
-resetButton.addEventListener("mouseup", resetGame);
+resetButtonDOM.addEventListener("mouseup", resetGame);
 
 function computerPlay() {
     // Set choice to a random number from 0 - 2.
@@ -67,15 +68,29 @@ function getResult() {
 }
 
 function updateDOM() {
-    const winMsg = `Yay, you win! ${playerMove} beats ${computerMove}!`;
-    const loseMsg = `Oh no, you lost! ${computerMove} beats ${playerMove}!`;
+    const winMsg = `Yay, you win! ${playerMove[0].toUpperCase() +
+        playerMove.slice(1)} beats ${computerMove}!`;
+    const loseMsg = `Oh no, you lost! ${computerMove[0].toUpperCase() +
+        computerMove.slice(1)} beats ${playerMove}!`;
     const drawMsg = `Draw! You both chose ${playerMove}!`;
 
     let resultMsg = "";
 
-    playerScoreDOM.textContent = `Player score: ${playerScore}`;
-    computerScoreDOM.textContent = `Computer score: ${computerScore}`;
+    // Update the scores text
+    playerScoreDOM.textContent = playerScore;
+    computerScoreDOM.textContent = computerScore;
 
+    // Update the computer and player's moves
+    playerMoveImgDOM.setAttribute("src", `img/${playerMove}.png`);
+    playerMoveImgDOM.setAttribute("alt", playerMove);
+    playerMoveDescDOM.textContent = `You chose: ${playerMove[0].toUpperCase() +
+        playerMove.slice(1)}!`;
+    computerMoveImgDOM.setAttribute("src", `img/${computerMove}.png`);
+    computerMoveImgDOM.setAttribute("alt", computerMove);
+    computerMoveDescDOM.textContent = `Computer chose: ${computerMove[0].toUpperCase() +
+        computerMove.slice(1)}!`;
+
+    // Update the results text
     if (gameOver === true) {
         if (playerScore > computerScore) {
             resultMsg = "win";
@@ -93,8 +108,14 @@ function updateDOM() {
 }
 
 function resetDOM() {
-    playerScoreDOM.textContent = "";
-    computerScoreDOM.textContent = "";
+    playerScoreDOM.textContent = "0";
+    computerScoreDOM.textContent = "0";
+    playerMoveImgDOM.setAttribute("src", `img/person.png`);
+    playerMoveImgDOM.setAttribute("alt", "person icon");
+    playerMoveDescDOM.textContent = `You`;
+    computerMoveImgDOM.setAttribute("src", `img/computer.png`);
+    computerMoveImgDOM.setAttribute("alt", "computer");
+    computerMoveDescDOM.textContent = `Computer`;
     resultsDOM.textContent = "Choose a move to start.";
 }
 
@@ -103,28 +124,24 @@ function playRound(event) {
 
     playerMove = event.target.getAttribute("id");
 
-    if (!playerMove) return;
+    if (!playerMove) {
+        playerMove = event.target.parentNode.getAttribute("id");
+    }
 
     computerMove = computerPlay();
 
     roundResult = getResult();
 
-    console.log(`Player: ${playerMove}, Computer : ${computerMove}`);
-
     if (roundResult === "win") {
-        console.log("win");
         playerScore++;
         if (playerScore >= 5) {
             gameOver = true;
         }
     } else if (roundResult === "lose") {
-        console.log("lose");
         computerScore++;
         if (computerScore >= 5) {
             gameOver = true;
         }
-    } else {
-        console.log("draw");
     }
 
     roundNumber++;
@@ -137,7 +154,6 @@ function resetGame() {
     roundResult = "";
     playerScore = 0;
     computerScore = 0;
-    roundNumber = 0;
     gameOver = false;
     resetDOM();
 }

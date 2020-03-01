@@ -15,35 +15,61 @@
             href="css/main.css"
             media="all"
         />
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body>
         <div class="game-container">
             <header class="header">
-                <div class="playerScore"></div>
+                <div class="playerScore">0</div>
                 <div class="title">
                     <h1>Rock, Paper, Scissors!</h1>
                 </div>
-                <div class="computerScore"></div>
+                <div class="computerScore">0</div>
             </header>
-            <main class="main">
+            <main class="game">
                 <div class="instructions"><h2>First to 5 wins!</h2></div>
                 <div class="movesContainer">
-                    <div class="playerMove"></div>
-                    <div class="computerMove"></div>
+                    <div class="playerMove">
+                        <div id="playerMoveDesc">You</div>
+                        <img
+                            src="img/person.png"
+                            class="playerMoveImg"
+                            alt="person icon"
+                        />
+                    </div>
+                    <div class="computerMove">
+                        <div id="computerMoveDesc">Computer</div>
+                        <img
+                            src="img/computer.png"
+                            class="computerMoveImg"
+                            alt="computer"
+                        />
+                    </div>
                 </div>
                 <div class="results">Choose a move to start.</div>
                 <div class="buttonContainer">
                     <div id="rock" class="moveButton">
-                        <img src="" />
-                        Rock
+                        <img src="img/rock.png" class="buttonImg" alt="rock" />
+                        <div class="buttonLabel">Rock</div>
                     </div>
                     <div id="paper" class="moveButton">
-                        <img src="" />
-                        Paper
+                        <img
+                            src="img/paper.png"
+                            class="buttonImg"
+                            alt="paper"
+                        />
+                        <div class="buttonLabel">Paper</div>
                     </div>
                     <div id="scissors" class="moveButton">
-                        <img src="" />
-                        Scissors
+                        <img
+                            src="img/scissors.png"
+                            class="buttonImg"
+                            alt="scissors"
+                        />
+                        <div class="buttonLabel">Scissors</div>
                     </div>
                 </div>
                 <div class="resetButton">New game</div>
